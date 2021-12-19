@@ -108,7 +108,7 @@ class Base implements BaseComposite {
         JMenu file = new JMenu("File");
         menubar.add(file);
         editarea2 = new JTextPane();
-        editarea2.setMargin(new Insets(50, 50, 50, 50));
+        editarea2.setMargin(new Insets(10, 10, 10, 10));
         editarea2.setPreferredSize(new Dimension(600, 600));
         JScrollPane scroll = new JScrollPane(editarea2);
 

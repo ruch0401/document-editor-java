@@ -38,17 +38,18 @@ class Base implements BaseComposite {
 
     public JPanel addComposite() {
         // Creating required JPanels and JLabels and setting text colors and background colors
-        north = new JPanel(new BorderLayout());
+        north = new JPanel(new BorderLayout(5, 5));
         editPane = new JPanel();
-        status = new JPanel(new BorderLayout());
+        status = new JPanel(new BorderLayout(5, 5));
         image = new JPanel(new FlowLayout());
-        tools = new JPanel(new BorderLayout());
+        tools = new JPanel(new BorderLayout(5, 5));
         east = new JPanel();
         west = new JPanel();
         padding1 = new JPanel();
         padding2 = new JPanel();
-        menu = new JPanel(new BorderLayout());
+        menu = new JPanel(new BorderLayout(5, 5));
         message = new JLabel("Status will be displayed here.");
+        message.setAlignmentX(Component.CENTER_ALIGNMENT);
         message.setForeground(Color.BLACK);
         message.setFont(courier20);
         padding_bottom = new JPanel();
@@ -250,7 +251,7 @@ class Base implements BaseComposite {
 interface ButtonsCommand {
     void click();
 
-    Font f = new Font("Courier", Font.BOLD, 20);
+    Font f = new Font("Inconsolata", Font.BOLD, 15);
     Dimension dimen = new Dimension(200, 200);
 }
 

@@ -18,7 +18,8 @@ scroll bars.
 
 # Working Video
 
-Click [here](DocumentEditorMaven/src/main/resources/working-video.mov) to view the working video
+Click [here](DocumentEditorMaven/src/main/resources/working-video.mov) to view the working video  
+Please download the video in order to watch it.
 
 # Design Patterns Used
 

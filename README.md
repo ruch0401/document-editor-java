@@ -246,6 +246,10 @@ Save As, Quit functionality whereas the Edit menu comprises the Cut, Copy and Pa
 - “Copy” allows the selected text to be copied for further use and reference.
 - “Paste” allows the text that was cut/copied to be pasted.
 
+| ![tools](DocumentEditorMaven/src/main/resources/tools.png) |
+|:----------------------------------------------------------:|
+|                        <b>Tools</b>                        |
+
 ### Size (Command Design Pattern)
 
 - “Up” button increases the size of the text by font size 2 for every click of the button

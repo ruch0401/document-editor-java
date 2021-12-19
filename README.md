@@ -21,6 +21,8 @@ scroll bars.
 Click [here](DocumentEditorMaven/src/main/resources/working-video.mov) to view the working video  
 Please download the video in order to watch it.
 
+Please refer [this](DocumentEditorMaven/src/main/resources/project-report.pdf) to view the PDF version of the project report
+
 # Design Patterns Used
 
 ## Composite Design Pattern

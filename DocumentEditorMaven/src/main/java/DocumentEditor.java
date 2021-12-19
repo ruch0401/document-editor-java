@@ -2,18 +2,17 @@ import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.text.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//Composite Design Pattern.
-//The method is initialised and performed operation on in the PSVM
+/*
+ * Composite Design Pattern. The method is initialised and performed operation on in the PSVM
+ */
 interface BaseComposite {
-    Font f = new Font("Courier", Font.BOLD, 20);
-    Font f1 = new Font("Lucida Handwriting", Font.BOLD, 36);
+    Font courier20 = new Font("Courier", Font.BOLD, 20);
+    Font courier36 = new Font("Helvetica", Font.BOLD, 36);
 }
 
 class Base implements BaseComposite {
@@ -30,8 +29,7 @@ class Base implements BaseComposite {
         frame = new JFrame("Document Editor");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
-        background = new JLabel(new
-                ImageIcon("C:\\Users\\ruch0\\OneDrive\\Documents\\NetBeansProjects\\Document\\src\\document\\bg7.jpg"));
+        background = new JLabel(new ImageIcon("")); // Use this to add custom background
         frame.setContentPane(background);
         frame.setLayout(new BorderLayout());
         frame.pack();
@@ -39,6 +37,7 @@ class Base implements BaseComposite {
     }
 
     public JPanel addComposite() {
+        // Creating required JPanels and JLabels and setting text colors and background colors
         north = new JPanel(new BorderLayout());
         editPane = new JPanel();
         status = new JPanel(new BorderLayout());
@@ -50,12 +49,14 @@ class Base implements BaseComposite {
         padding2 = new JPanel();
         menu = new JPanel(new BorderLayout());
         message = new JLabel("Status will be displayed here.");
-        message.setForeground(Color.WHITE);
-        message.setFont(f);
+        message.setForeground(Color.BLACK);
+        message.setFont(courier20);
         padding_bottom = new JPanel();
         title = new JLabel("Document Editor");
-        title.setForeground(Color.WHITE);
-        title.setFont(f1);
+        title.setForeground(Color.BLACK);
+        title.setFont(courier36);
+
+        // Adding JPanel, JLabels to the JFrame with the default Border Layout
         frame.add(north, BorderLayout.NORTH);
         frame.add(editPane, BorderLayout.CENTER);
         frame.add(status, BorderLayout.SOUTH);
@@ -69,7 +70,11 @@ class Base implements BaseComposite {
         menu.add(padding1, BorderLayout.WEST);
         menu.add(padding2, BorderLayout.EAST);
         menu.add(tools, BorderLayout.CENTER);
+
+        // Setting the layout of the 'tools' JPanel
         tools.setLayout(new BoxLayout(tools, BoxLayout.X_AXIS));
+
+        // Setting preferred size of each component
         message.setPreferredSize(new Dimension(600, 200));
         padding_bottom.setPreferredSize(new Dimension(800, 200));
         image.setPreferredSize(new Dimension(500, 100));
@@ -80,6 +85,8 @@ class Base implements BaseComposite {
         west.setPreferredSize(new Dimension(200, 100));
         padding1.setPreferredSize(new Dimension(200, 100));
         padding2.setPreferredSize(new Dimension(200, 100));
+
+        // Setting opacity of each component
         padding_bottom.setOpaque(false);
         menu.setOpaque(false);
         tools.setOpaque(false);
@@ -91,6 +98,7 @@ class Base implements BaseComposite {
         image.setOpaque(false);
         editPane.setOpaque(false);
         north.setOpaque(false);
+
         return tools;
     }
 
@@ -200,7 +208,7 @@ class Base implements BaseComposite {
         return editarea2;
     }
 
-    //Method to perform the save as operation on the text
+    // Method to perform the save as operation on the text
     public void save() {
         FileNameExtensionFilter extensionFilter = new FileNameExtensionFilter("Text File", "txt");
         final JFileChooser saveAsFileChooser = new JFileChooser();
@@ -236,8 +244,9 @@ class Base implements BaseComposite {
     }
 }
 
-//Command Design Pattern.
-//The invoker class in written below and it is called in the PSVM
+/*
+ * Command Design Pattern. The method is initialised and performed operation on in the main method
+ */
 interface ButtonsCommand {
     void click();
 
@@ -264,7 +273,7 @@ class FontSize implements ButtonsCommand {
         decr.setAlignmentX(Component.CENTER_ALIGNMENT);
         l1 = new JLabel("Size ");
         l1.setAlignmentX(Component.CENTER_ALIGNMENT);
-        l1.setForeground(Color.WHITE);
+        l1.setForeground(Color.BLACK);
         label = new JLabel("\t\t\t\t");
         StyledDocument doc = (StyledDocument) pane.getDocument();
         Style style = doc.addStyle("StyleName", null);
@@ -321,7 +330,7 @@ class FontStyle implements ButtonsCommand {
         underline = new JButton("Underline");
         underline.setAlignmentX(Component.CENTER_ALIGNMENT);
         l2 = new JLabel("Style ");
-        l2.setForeground(Color.WHITE);
+        l2.setForeground(Color.BLACK);
         l2.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
@@ -395,14 +404,18 @@ class FontColor implements ButtonsCommand {
         this.tools = tools;
         p3 = new JPanel();
         p3.setOpaque(false);
+
         red = new JButton("Red");
         red.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         green = new JButton("Green");
         green.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         blue = new JButton("Blue");
         blue.setAlignmentX(Component.CENTER_ALIGNMENT);
+
         l3 = new JLabel("Color");
-        l3.setForeground(Color.WHITE);
+        l3.setForeground(Color.BLACK);
         l3.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
@@ -480,7 +493,7 @@ class FontFamily implements ButtonsCommand {
         sansSerif = new JButton("Surprise");
         sansSerif.setAlignmentX(Component.CENTER_ALIGNMENT);
         l4 = new JLabel("Font Family");
-        l4.setForeground(Color.WHITE);
+        l4.setForeground(Color.BLACK);
         l4.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
@@ -542,7 +555,7 @@ class FontFamily implements ButtonsCommand {
     }
 }
 
-//This implementation includes the use of the Decorator Design Pattern as well.
+// This implementation includes the use of the Decorator Design Pattern as well.
 class Decorate implements ButtonsCommand {
     JPanel tools, p5;
     JTextPane pane;
@@ -560,7 +573,7 @@ class Decorate implements ButtonsCommand {
         addBorder = new JButton("Add Border");
         addBorder.setAlignmentX(Component.CENTER_ALIGNMENT);
         l5 = new JLabel("Decorate");
-        l5.setForeground(Color.WHITE);
+        l5.setForeground(Color.BLACK);
         l5.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
@@ -581,7 +594,7 @@ class Decorate implements ButtonsCommand {
         p5.setBackground(Color.ORANGE);
 
         addBorder.addActionListener(ae -> {
-            //Instantiating the Deorating class in the Decorator[2][3][2][3] Design Pattern
+            // Instantiating the Deorating class in the Decorator[2][3][2][3] Design Pattern
             Decorating d = new AddBorder(pane);
             d.addDecor(0);
         });
@@ -592,7 +605,7 @@ class Decorate implements ButtonsCommand {
     }
 }
 
-//This implementation includes the use of the Bridge[4][5] Design Pattern as well.
+// This implementation includes the use of the Bridge[4][5] Design Pattern as well.
 class Os implements ButtonsCommand {
     JPanel tools, p6;
     JTextPane pane;
@@ -612,7 +625,7 @@ class Os implements ButtonsCommand {
         macOS = new JButton("MacOS");
         macOS.setAlignmentX(Component.CENTER_ALIGNMENT);
         l2 = new JLabel("Operating System");
-        l2.setForeground(Color.WHITE);
+        l2.setForeground(Color.BLACK);
         l2.setAlignmentX(Component.CENTER_ALIGNMENT);
     }
 
@@ -633,26 +646,26 @@ class Os implements ButtonsCommand {
         p6.setBackground(Color.ORANGE);
 
         windows.addActionListener(ae -> {
-            //Instantiating the abstract Software class and passing the information of the type of OS and Platform in the parameters
+            // Instantiating the abstract Software class and passing the information of the type of OS and Platform in the parameters
             Software windows = new OperatingSystem("Windows", "Platform1", new Windows(), status);
             windows.display();
         });
 
         linux.addActionListener(ae -> {
-            //Instantiating the abstract Software class and passing the information of the type of OS and Platform in the parameters
+            // Instantiating the abstract Software class and passing the information of the type of OS and Platform in the parameters
             Software linux = new OperatingSystem("Linux", "Platform2", new Linux(), status);
             linux.display();
         });
 
         macOS.addActionListener(ae -> {
-            //Instantiating the abstract Software class and passing the information of the type of OS and Platform in the parameters
+            // Instantiating the abstract Software class and passing the information of the type of OS and Platform in the parameters
             Software macOS = new OperatingSystem("MacOS", "Platform3", new Mac(), status);
             macOS.display();
         });
     }
 }
 
-//Invoker class for the Command Design Pattern which has been used to add buttons
+// Invoker class for the Command Design Pattern which has been used to add buttons
 class Invoke {
     private final java.util.List<ButtonsCommand> orderList = new ArrayList<>();
 
@@ -667,7 +680,7 @@ class Invoke {
     }
 }
 
-//Bridge[4][5] Design Pattern
+// Bridge Design Pattern
 interface drawOS {
     void displayOS(String os, String platform, JLabel message);
 }
@@ -724,7 +737,7 @@ class OperatingSystem extends Software {
     }
 }
 
-//Decorator[2][3][2][3] Design Pattern
+// Decorator Design Pattern
 abstract class Decorating {
     JTextPane pane;
 
@@ -748,7 +761,7 @@ class AddBorder extends Decorating {
             pane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK,
                     25), BorderFactory.createEmptyBorder(20, 20, 20, 20)));
         } else {
-            pane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.white),
+            pane.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createLineBorder(Color.BLACK),
                     BorderFactory.createEmptyBorder(10, 10, 10, 10)));
         }
     }
@@ -762,20 +775,20 @@ class AddScrollBar extends Decorating {
 
     @Override
     void addDecor(int flag) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet."); // To change body of generated methods, choose Tools | Templates.
     }
 }
 
 public class DocumentEditor {
     public static void main(String[] args) {
-        //Instantiating the Base class in the Composite Design Pattern
+        // Instantiating the Base class in the Composite Design Pattern
         Base b = new Base();
 
-        //Collecting objects of JPanel & JTextPane
+        // Collecting objects of JPanel & JTextPane
         JPanel p = b.addComposite();
         JTextPane t = b.addLeaf();
 
-        //instantiating all classes used to add functionalities using Command Design Pattern
+        // Instantiating all classes used to add functionalities using Command Design Pattern
         FontSize fs = new FontSize(p, t);
         FontStyle st = new FontStyle(p, t);
         FontColor clr = new FontColor(p, t);
@@ -783,7 +796,7 @@ public class DocumentEditor {
         Decorate dr = new Decorate(p, t);
         Os os = new Os(p, t, b.message);
 
-        //Instantiating the Invoker class and adding all buttons to the array list
+        // Instantiating the Invoker class and adding all buttons to the array list
         Invoke iv = new Invoke();
         iv.addButton(fs);
         iv.addButton(st);
@@ -792,7 +805,7 @@ public class DocumentEditor {
         iv.addButton(dr);
         iv.addButton(os);
 
-        //Placing the buttons on the JPanel using placeButton() method
+        // Placing the buttons on the JPanel using placeButton() method
         iv.placeButton();
     }
 }

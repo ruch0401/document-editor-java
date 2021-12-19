@@ -16,6 +16,10 @@ WYSIWYG representation of a document occupies a large rectangular area in the ce
 and graphics freely in a variety of formatting styles. Surrounding the document are the usual pull down menus and the
 scroll bars.
 
+# Working Video
+
+Click [here](DocumentEditorMaven/src/main/resources/working-video.mov) to view the working video
+
 # Design Patterns Used
 
 ## Composite Design Pattern

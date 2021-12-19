@@ -24,3 +24,4 @@ hs_err_pid*
 /DocumentEditorMaven/DocumentEditorMaven.iml
 *.lst
 pom.properties
+/DocumentEditorMaven/target/
